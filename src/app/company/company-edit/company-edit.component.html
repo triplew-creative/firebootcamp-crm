@@ -1,0 +1,36 @@
+
+<div class="container py-4" [formGroup]="formGroup">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group vstack gap-3" [formGroup]="formGroup">
+                <div>
+                    <label for="name">Name</label>
+                    <input [ngClass]="{'border-danger': nameControl.hasError('required') || nameControl.hasError('minLength')}" class="form-control" type="text" formControlName="name" id="name"/>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                <input [ngClass]="{'border-danger': emailControl.hasError('required') || emailControl.hasError('email')}" class="form-control" type="email" formControlName="email" id="email"/>
+                </div>
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="checkPhone" type="checkbox" value="" id="phoneCheck">
+                        <label class="form-check-label" for="checkPhone">
+                          Include phone?
+                        </label>
+                      </div>
+                      <div [hidden]="!checkPhoneControl.value">
+                        <label for="phone">Phone</label>
+                        <input class="form-control" [ngClass]="{'border-danger': phoneControl.hasError('required')}"  type="text" formControlName="phone" id="phone"/>
+                    </div>
+                </div>
+               
+               
+                
+                <div class="hstack gap-3">
+                    <button class="btn btn-light btn-lg" [routerLink]="['/company/list']">Cancel</button>
+                    <button (click)="submitForm($event)" [disabled]="formGroup.invalid" type="submit" class="btn btn-success btn-lg">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

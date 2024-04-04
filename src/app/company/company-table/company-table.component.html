@@ -1,0 +1,36 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+    </tr>
+    </thead>
+    <tbody>
+        @for(item of companies$ | async; track item; let idx = $index, last = $last) {
+            <tr>
+                <td [innerText]="item.name"></td>
+                <td [innerText]="item.email"></td>
+                <td [innerText]="item.phone"></td>
+                <td class="hstack gap-2 flex-wrap">
+                    <button [routerLink]="['/company/edit', item.id]" type="button" class="btn btn-small btn-primary">Edit</button>
+                    <button (click)="deleteCompany(item)" type="button" class="btn btn-small btn-danger">Delete</button>
+                </td>
+            <!-- @if (last) {
+                <p>{{item.name}} is the last record</p>
+            }
+            @switch(item.name) {
+                @case('Google') {
+                    <p>{{item.name}} created Angular</p>
+                }
+                @default {
+                    <p>{{item.name}} is a kewl company</p>
+                }
+            } -->
+            </tr>
+            
+        } @empty {
+            <p>No Items!!!</p>
+        }
+    </tbody>
+</table>

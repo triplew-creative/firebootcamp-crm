@@ -1,0 +1,20 @@
+
+<div [formGroup]="formGroup">
+    <div class="row">
+        <div class="col-12 vstack gap-4">
+            <div class="d-flex justify-content-end">
+                <button [routerLink]="['/company/add']"  type="button" class="btn btn-success">Add company</button>
+            </div>
+            <div class="hstack gap-2">
+                <label for="searchControl">Find a company:</label>
+                <input type="search" formControlName="searchControl" id="searchControl">
+            </div>
+            <fbc-company-table 
+                [companies$]="companies$"
+                (delete)="deleteCompany($event)"
+                (edit)="editCompany($event)" ></fbc-company-table>
+            
+               
+        </div>
+    </div>
+</div>
